@@ -1,0 +1,60 @@
+{
+  "project": "ZED 2i Street Sign Geolocation",
+  "version": "0.1.0",
+
+  "zed_camera": {
+    "resolution": "HD720",
+    "fps": 30,
+    "depth_mode": "NEURAL",
+    "coordinate_units": "METER",
+    "coordinate_system": "RIGHT_HANDED_Y_UP"
+  },
+
+  "recording": {
+    "output_dir": "recordings",
+    "compression": "H265",
+    "filename_prefix": "drive"
+  },
+
+  "gnss": {
+    "serial_port": "COM3",
+    "baud_rate": 115200,
+    "update_rate_hz": 5,
+    "min_fix_quality": 4,
+    "lever_arm_m": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "_comment": "Offset from GPS antenna to ZED camera center in meters (right, up, forward)"
+    }
+  },
+
+  "sign_detection": {
+    "model_path": "models/sign_detector.onnx",
+    "input_size": 640,
+    "confidence_threshold": 0.5,
+    "nms_threshold": 0.45,
+    "max_depth_m": 25.0,
+    "enable_tracking": true,
+    "classes": [
+      "speed_limit_10", "speed_limit_20", "speed_limit_30", "speed_limit_40",
+      "speed_limit_50", "speed_limit_60", "speed_limit_70", "speed_limit_80",
+      "speed_limit_100", "speed_limit_110",
+      "stop", "give_way", "no_entry", "no_turning",
+      "roundabout", "pedestrian_crossing", "school_zone",
+      "street_name"
+    ]
+  },
+
+  "deduplication": {
+    "distance_threshold_m": 3.0,
+    "min_observations": 3,
+    "position_averaging": "weighted_by_confidence"
+  },
+
+  "output": {
+    "geojson_path": "output/signs.geojson",
+    "csv_path": "output/signs.csv",
+    "log_path": "output/session.log"
+  }
+}

@@ -1,0 +1,30 @@
+# ZED 2i Street Sign Geolocation — Python Dependencies
+# =====================================================
+# Install with: pip install -r requirements_zed.txt
+#
+# NOTE: pyzed (ZED SDK Python API) must be installed separately
+# via the ZED SDK installer's get_python_api.py script.
+
+# --- Core ---
+numpy>=1.24
+opencv-python>=4.8
+
+# --- GNSS ---
+pyserial>=3.5
+pynmea2>=1.19
+
+# --- YOLO Training ---
+ultralytics>=8.2
+
+# --- Dataset Preparation ---
+Pillow>=10.0
+
+# --- Optional: Roboflow dataset download ---
+# roboflow>=1.1
+
+# --- Optional: Web dashboard ---
+# flask>=3.0
+# folium>=0.15
+
+# --- Existing project dependencies ---
+open3d>=0.18
